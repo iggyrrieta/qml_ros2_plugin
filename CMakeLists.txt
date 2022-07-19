@@ -90,56 +90,56 @@ ament_target_dependencies(${PROJECT_NAME} ament_index_cpp rclcpp image_transport
 ## Testing ##
 #############
 
-if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  ament_lint_auto_find_test_dependencies()
+# if(BUILD_TESTING)
+#   find_package(ament_lint_auto REQUIRED)
+#   ament_lint_auto_find_test_dependencies()
 
-  find_package(ament_cmake_gtest REQUIRED)
-  find_package(ros2_babel_fish_test_msgs REQUIRED)
-  find_package(example_interfaces REQUIRED)
-  find_package(std_srvs REQUIRED)
-  find_package(Qt5Test REQUIRED)
+#   find_package(ament_cmake_gtest REQUIRED)
+#   find_package(ros2_babel_fish_test_msgs REQUIRED)
+#   find_package(example_interfaces REQUIRED)
+#   find_package(std_srvs REQUIRED)
+#   find_package(Qt5Test REQUIRED)
 
-  ament_add_gtest(test_communication test/communication.cpp)
-  ament_target_dependencies(test_communication ros2_babel_fish_test_msgs example_interfaces std_srvs)
-  target_link_libraries(test_communication ${PROJECT_NAME} Qt5::Test)
+#   ament_add_gtest(test_communication test/communication.cpp)
+#   ament_target_dependencies(test_communication ros2_babel_fish_test_msgs example_interfaces std_srvs)
+#   target_link_libraries(test_communication ${PROJECT_NAME} Qt5::Test)
 
-  ament_add_gtest(test_image_conversions test/image_conversions.cpp)
-  ament_target_dependencies(test_image_conversions ros2_babel_fish_test_msgs)
-  target_link_libraries(test_image_conversions ${PROJECT_NAME})
+#   ament_add_gtest(test_image_conversions test/image_conversions.cpp)
+#   ament_target_dependencies(test_image_conversions ros2_babel_fish_test_msgs)
+#   target_link_libraries(test_image_conversions ${PROJECT_NAME})
 
-  ament_add_gtest(test_image_transport_subscriber test/image_transport_subscriber.cpp)
-  ament_target_dependencies(test_image_transport_subscriber ros2_babel_fish_test_msgs)
-  target_link_libraries(test_image_transport_subscriber ${PROJECT_NAME})
+#   ament_add_gtest(test_image_transport_subscriber test/image_transport_subscriber.cpp)
+#   ament_target_dependencies(test_image_transport_subscriber ros2_babel_fish_test_msgs)
+#   target_link_libraries(test_image_transport_subscriber ${PROJECT_NAME})
 
-  ament_add_gtest(test_message_conversions test/message_conversions.cpp)
-  ament_target_dependencies(test_message_conversions ros2_babel_fish_test_msgs)
-  target_link_libraries(test_message_conversions ${PROJECT_NAME})
+#   ament_add_gtest(test_message_conversions test/message_conversions.cpp)
+#   ament_target_dependencies(test_message_conversions ros2_babel_fish_test_msgs)
+#   target_link_libraries(test_message_conversions ${PROJECT_NAME})
 
-  ament_add_gtest(test_ros_life_cycle test/ros_life_cycle.cpp)
-  ament_target_dependencies(test_ros_life_cycle ros2_babel_fish_test_msgs)
-  target_link_libraries(test_ros_life_cycle ${PROJECT_NAME})
+#   ament_add_gtest(test_ros_life_cycle test/ros_life_cycle.cpp)
+#   ament_target_dependencies(test_ros_life_cycle ros2_babel_fish_test_msgs)
+#   target_link_libraries(test_ros_life_cycle ${PROJECT_NAME})
 
-  ament_add_gtest(test_logging test/logging.cpp)
-  target_link_libraries(test_logging ${PROJECT_NAME})
-  #
-  ament_add_gtest(test_io test/io.cpp)
-  ament_target_dependencies(test_io ros2_babel_fish_test_msgs)
-  target_link_libraries(test_io ${PROJECT_NAME})
+#   ament_add_gtest(test_logging test/logging.cpp)
+#   target_link_libraries(test_logging ${PROJECT_NAME})
+#   #
+#   ament_add_gtest(test_io test/io.cpp)
+#   ament_target_dependencies(test_io ros2_babel_fish_test_msgs)
+#   target_link_libraries(test_io ${PROJECT_NAME})
 
-  install(DIRECTORY test/test_io DESTINATION share/qml_ros2_plugin/test/)
-endif()
+#   install(DIRECTORY test/test_io DESTINATION share/qml_ros2_plugin/test/)
+# endif()
 
 # to run: catkin build --this --no-deps -DENABLE_COVERAGE_TESTING=ON -DCMAKE_BUILD_TYPE=Debug -v --catkin-make-args ${PROJECT_NAME}_coverage
 # Path to results overview will be printed in the build process
 # Big thanks to the moveit people from whose docs I've obtained the information on how to get the coverage
-if(BUILD_TESTING AND ENABLE_COVERAGE_TESTING)
-  find_package(code_coverage REQUIRED)   # catkin package ros-*-code-coverage
-  include(CodeCoverage)
-  append_coverage_compiler_flags()
-  set(COVERAGE_EXCLUDES "*/${PROJECT_NAME}/test*" "*/build/*" "*/src/qml_ros2_plugin.cpp")
-  add_code_coverage(NAME ${PROJECT_NAME}_coverage)
-endif()
+# if(BUILD_TESTING AND ENABLE_COVERAGE_TESTING)
+#   find_package(code_coverage REQUIRED)   # catkin package ros-*-code-coverage
+#   include(CodeCoverage)
+#   append_coverage_compiler_flags()
+#   set(COVERAGE_EXCLUDES "*/${PROJECT_NAME}/test*" "*/build/*" "*/src/qml_ros2_plugin.cpp")
+#   add_code_coverage(NAME ${PROJECT_NAME}_coverage)
+# endif()
 
 #############
 ## Install ##
